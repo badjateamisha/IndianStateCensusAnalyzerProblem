@@ -1,17 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using IndianStateCensusAnalyzer;
+using IndianStateCensusAnalyzer.POCO;
+using System.Globalization;
+using static IndianStateCensusAnalyzer.CensusAnalyser;
 
-namespace IndianStateCensusAnalyser
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("\n Welcome to Indian States Census Analyser program \n");
-        }
-    }
-}
+Console.WriteLine("Hello, Welcome to Indian State Census Analyser!");
+CensusAnalyser censusAnalyser = new();
+string csvPath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCensusData.csv";
+//censusAnalyser.ReadCsvFile();
+string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
+Dictionary<string, CensusDTO> totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, csvPath, IndianStateCensusHeaders);
+Console.WriteLine("Total record="+ totalRecord.Count);

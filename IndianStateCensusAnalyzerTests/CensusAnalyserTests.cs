@@ -9,6 +9,7 @@ namespace CensusAnalyserTest
     public class Tests
     {
         string csvPath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCensusData.csv";
+        string IndianStateCensusDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCensusData.csv";
 
         string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
         CensusAnalyser censusAnalyser;
@@ -27,6 +28,18 @@ namespace CensusAnalyserTest
         {
             totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, csvPath, IndianStateCensusHeaders);
             Assert.AreEqual(29, totalRecord.Count);
+        }
+        [Test]
+        public void GivenIndianCensusDataFile_IfIncorret_ShouldThrowCustomException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, IndianStateCensusDataWrongFilePath, IndianStateCensusHeaders);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("File Not Found", e.Message);
+            }
         }
     }
 }

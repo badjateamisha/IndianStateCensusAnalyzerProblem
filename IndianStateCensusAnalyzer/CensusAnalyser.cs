@@ -50,11 +50,4 @@ namespace IndianStateCensusAnalyzer
             Console.WriteLine(row);
         }
     }
-    public class DataHeadersClass
-    {
-        public string State;
-        public string Population;
-        public string AreaInSqKm;
-        public string DensityPerSqKm;
-    }
 }

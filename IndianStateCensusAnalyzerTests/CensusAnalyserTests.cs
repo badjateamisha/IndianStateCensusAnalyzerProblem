@@ -12,6 +12,7 @@ namespace CensusAnalyserTest
         string IndianStateCensusDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCensusData.csv";
         string DelimiterIndianStateCensusDataFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzer\IndianStateCensus_Analyser\DelimiterIndiaStateCensusData.csv";
         string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
+        string IndianStateCensusHeaders2 = "States,population,areaInSqKm,densityPerSqKm";
         CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecord;
         Dictionary<string, CensusDTO> stateRecord;
@@ -53,6 +54,19 @@ namespace CensusAnalyserTest
                 Assert.AreEqual("File Contains Wrong Delimiter", e.Message);
             }
         }
+        [Test]
+        public void GivenIndianCensusDataFile_WrongHeader_ShouldThrowCustomException()
+        {
+            try
+            {
+                totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, csvPath, IndianStateCensusHeaders2);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("Incorrect header in Data", e.Message);
+            }
+        }
+
 
     }
 }

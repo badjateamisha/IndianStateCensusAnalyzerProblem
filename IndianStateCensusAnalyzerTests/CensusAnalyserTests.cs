@@ -11,6 +11,8 @@ namespace CensusAnalyserTest
         string csvPath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCensusData.csv";
         string IndianStateCensusDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCensusData.csv";
         string DelimiterIndianStateCensusDataFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzer\IndianStateCensus_Analyser\DelimiterIndiaStateCensusData.csv";
+        string IndiaStateCodeCsvFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCode.csv";
+
         string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
         string IndianStateCensusHeaders2 = "States,population,areaInSqKm,densityPerSqKm";
         CensusAnalyser censusAnalyser;

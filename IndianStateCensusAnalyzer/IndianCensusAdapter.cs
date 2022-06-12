@@ -18,7 +18,7 @@ namespace IndianStateCensusAnalyzer
             censusData = GetCensusData(csvFilePath, dataHeaders);
             foreach (string data in censusData.Skip(1))
             {
-                if (data.Contains(","))
+                if (data.Contains("-"))
                 {
                     throw new CensusAnalyserException("File Contains Wrong Delimiter", CensusAnalyserException.ExceptionType.INCORRECT_DELIMITER);
                 }

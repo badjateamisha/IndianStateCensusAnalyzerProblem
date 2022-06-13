@@ -15,6 +15,8 @@ string csvPath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem
 string IndiaStateCodeCsvFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCode.csv";
 string IndianStateCodeDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCode.csv";
 string IndianStateCodeDataWrongExtensionFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzerTests\IndiaStateCode.txt";
+string DelimeterIndiaStateCode = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzer_Problem\IndianStateCensus_Analyser\DelimeterIndiaStateCode.csv";
+
 
 string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
 string IndianStateCensusHeaders2 = "States,population,areaInSqKm,densityPerSqKm";
@@ -23,7 +25,7 @@ string IndiaStateCodeHeaders = "SrNo,State Name,TIN,StateCode";
 
 while (true)
 {
-    Console.WriteLine("Please choose the option: \n1)UC1 - Check the number of records in CSV file\n2)UC1.2 - Given wrong file Path\n3)UC1.3 - Giving wrong text file as Input\n4)UC1.4-Throw exception if Delimeter is Wrong\n5)UC1.5-Throw exception if Wrong Headers are given\n6)UC2 Load India State code (Count Rows)\n7)UC2.2 Given wrong file Path(for Indian State code)\n8)UC2.3Throw exception if Extension is Wrong(for Indian State code)");
+    Console.WriteLine("Please choose the option: \n1)UC1 - Check the number of records in CSV file\n2)UC1.2 - Given wrong file Path\n3)UC1.3 - Giving wrong text file as Input\n4)UC1.4-Throw exception if Delimeter is Wrong\n5)UC1.5-Throw exception if Wrong Headers are given\n6)UC2 Load India State code (Count Rows)\n7)UC2.2 Given wrong file Path(for Indian State code)\n8)UC2.3Throw exception if Extension is Wrong(for Indian State code)\n9)UC2.4-Throw exception if Delimeter is Wrong(for Indian State code)");
     int option = Convert.ToInt32(Console.ReadLine());
     switch (option)
     {
@@ -90,6 +92,17 @@ while (true)
             try
             {
                 totalRecord = censusAnalyser.LoadCensusData(Country.INDIA, IndianStateCodeDataWrongExtensionFilePath, IndiaStateCodeHeaders);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            break;
+        case 9:
+            try
+            {
+                IndianCensusAdapter a1 = new IndianCensusAdapter();
+                stateRecord = a1.LoadCensusData(DelimeterIndiaStateCode, IndiaStateCodeHeaders);
             }
             catch (CensusAnalyserException e)
             {

@@ -20,5 +20,5 @@ namespace IndianStateCensusAnalyzer.POCO
             this.area = area;
             this.density = density;
         }
-        }
+    }
 }

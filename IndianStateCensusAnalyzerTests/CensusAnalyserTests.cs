@@ -12,10 +12,12 @@ namespace CensusAnalyserTest
         string IndianStateCensusDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCensusData.csv";
         string DelimiterIndianStateCensusDataFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzer\IndianStateCensus_Analyser\DelimiterIndiaStateCensusData.csv";
         string IndiaStateCodeCsvFilePath = @"C:\Users\amisha\source\repos\IndianStateCensusAnalyzerProblem\IndianStateCensusAnalyzer\IndiaStateCode.csv";
+        string IndianStateCodeDataWrongFilePath = @"C:\Users\amisha\source\repos\Indian_State_Census_Analyzer_Problem\IndianStateCensus_Analyser\IndianStateCode.csv";
 
         string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
         string IndianStateCensusHeaders2 = "States,population,areaInSqKm,densityPerSqKm";
         string IndiaStateCodeHeaders = "SrNo,State Name,TIN,StateCode";
+
 
         CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecord;
@@ -75,6 +77,18 @@ namespace CensusAnalyserTest
         {
             stateRecord = censusAnalyser.LoadCensusData(Country.INDIA, IndiaStateCodeCsvFilePath, IndiaStateCodeHeaders);
             Assert.AreEqual(37, stateRecord.Count);
+        }
+        [Test]
+        public void GivenIndiaStateCodeFile_IfIncorret_ShouldThrowCustomException()
+        {
+            try
+            {
+                stateRecord = censusAnalyser.LoadCensusData(Country.INDIA, IndianStateCodeDataWrongFilePath, IndiaStateCodeHeaders);
+            }
+            catch (CensusAnalyserException e)
+            {
+                Assert.AreEqual("File Not Found", e.Message);
+            }
         }
 
     }

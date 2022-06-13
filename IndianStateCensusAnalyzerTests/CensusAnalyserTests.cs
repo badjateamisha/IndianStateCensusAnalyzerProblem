@@ -15,6 +15,8 @@ namespace CensusAnalyserTest
 
         string IndianStateCensusHeaders = "State,Population,AreaInSqKm,DensityPerSqKm";
         string IndianStateCensusHeaders2 = "States,population,areaInSqKm,densityPerSqKm";
+        string IndiaStateCodeHeaders = "SrNo,State Name,TIN,StateCode";
+
         CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecord;
         Dictionary<string, CensusDTO> stateRecord;
@@ -68,7 +70,12 @@ namespace CensusAnalyserTest
                 Assert.AreEqual("Incorrect header in Data", e.Message);
             }
         }
-
+        [Test]
+        public void GivenIndiaStateCodeFile_WhenReaded_ShouldReturnStateCodeCount()
+        {
+            stateRecord = censusAnalyser.LoadCensusData(Country.INDIA, IndiaStateCodeCsvFilePath, IndiaStateCodeHeaders);
+            Assert.AreEqual(37, stateRecord.Count);
+        }
 
     }
 }
